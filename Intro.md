@@ -73,3 +73,7 @@ If a .COM file or a .EXE file is found, COMMAND.COM uses the MS-DOS EXEC functio
 Finally, it sets up the registers appropriately and transfers control to the entry point for the program. (Both the PSP and the EXEC function will be discussed in more detail in Chapters 3 and 12.) When the transient program has finished its job, it calls a special MS-DOS termination function that releases the transient program's memory and returns control to the program that caused the transient program to be loaded (COMMAND.COM, in this case).
 
 A transient program has nearly complete control of the system's resources while it is executing. The only other tasks that are accomplished are those performed by interrupt handlers (such as the keyboard input driver and the real-time clock) and operations that the transient program requests from the operating system. **MS-DOS does not support sharing of the central processor among several tasks executing concurrently**, nor can it wrest control away from a program when it crashes or executes for too long.
+
+
+# How is MS-DOS loaded ?
+When the system is powered up, program execution begins at address 0FFFF0H. This is a feature of the 8086 family. Hence, the systems based on these processors are designed so that the address OFFFF0H lies in a portion of the ROM and contains a **jump instruction to transfer the control to system test code and the ROM bootstrap routine**
